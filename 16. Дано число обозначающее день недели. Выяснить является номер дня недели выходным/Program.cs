@@ -1,11 +1,28 @@
 ﻿// Дано число обозначающее день недели. Выяснить является номер дня недели выходным
 
-int a = 0;
-string s = String.Empty;
+void ErrorEnter()
+{
+    Console.WriteLine("Нужно ввести число от 1 до 7. Нажмите любую клавишу для повтора");
+    Console.ReadLine();
+    EnterValue();
+}
 
-System.Console.WriteLine("Введите число, обозначающее день недели ");
-s = Console.ReadLine();
-a = Convert.ToInt32(s);
+void EnterValue()
+{
+    Console.Clear();
+    Console.WriteLine("Введите число, обозначающее день недели ");
+    string valueStr = Console.ReadLine();
 
-if(a == 6 | a ==7) System.Console.WriteLine("Номер дня недели " + a + " соответствует выходному дню");
-else System.Console.WriteLine("Номер дня недели " + a + " не соответствует выходному дню");
+    if (int.TryParse(valueStr, out int valueInt))   // проверяем, что введено число, а не буквы. преобразовывая строку в число 
+    {
+        if (valueInt>=1 && valueInt<8)
+            {
+                if (valueInt>5 && valueInt<8)
+                    Console.WriteLine("Номер дня недели " + valueInt + " соответствует выходному дню");
+                else Console.WriteLine("Номер дня недели " + valueInt + " не соответствует выходному дню");
+            }
+        else ErrorEnter(); 
+    }
+    else Console.WriteLine("Вы ввели не число");
+}
+EnterValue();

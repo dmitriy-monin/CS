@@ -2,8 +2,10 @@
 
 Console.Clear();
 Console.WriteLine("Введите трехзначное число: ");
-int a = int.Parse(Console.ReadLine());
-if (a>99 && a<1000)
-    Console.WriteLine("Вторая цифра: " + a%100/10);
-else
-    Console.WriteLine("Ошибка! Это не трехзначное число!");
+string valueStr = Console.ReadLine();
+if (int.TryParse(valueStr, out int valueInt))
+    if (valueInt>99 && valueInt<1000)
+        Console.WriteLine("Вторая цифра: " + valueInt%100/10);
+    else
+        Console.WriteLine("Ошибка! Это не трехзначное число!");
+else Console.WriteLine("Ошибка! Это не число!");
