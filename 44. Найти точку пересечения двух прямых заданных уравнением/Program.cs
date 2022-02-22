@@ -3,16 +3,24 @@
 
 Console.Clear();
 Console.Write("Введите k1: ");
-double k1 = double.Parse(Console.ReadLine());
+string kk1 = Console.ReadLine();
 Console.Write("Введите b1: ");
-double b1 = double.Parse(Console.ReadLine());
+string bb1 = Console.ReadLine();
 Console.Write("Введите k2: ");
-double k2 = double.Parse(Console.ReadLine());
+string kk2 = Console.ReadLine();
 Console.Write("Введите b2: ");
-double b2 = double.Parse(Console.ReadLine());
+string bb2 = Console.ReadLine();
 
-if (k1 == k2)
-    Console.WriteLine("Прямые не пересекаются!");
+if (double.TryParse(kk1, out double k1)
+    && double.TryParse(bb1, out double b1)
+    && double.TryParse(kk2, out double k2)
+    && double.TryParse(bb2, out double b2))
+{
+    if (k1 == k2)
+        Console.WriteLine("Прямые не пересекаются!");
 
-double x = (b1 - b2) / (k2 - k1);
-Console.WriteLine("x = " + x);
+    double x = (b1 - b2) / (k2 - k1);
+    Console.WriteLine("x = " + x);
+}
+else
+    Console.WriteLine("Ошибка! Введены неверные данные!");
